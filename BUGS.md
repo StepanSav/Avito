@@ -1,40 +1,5 @@
-| Id  | Data  | Environment      | Priority | Title                                                                                                                   | Precondition                           | Steps | Ex Result | Ac Result | Link |
-| :-: | :---: | :--------------- | :------: | :---------------------------------------------------------------------------------------------------------------------- | :------------------------------------- | :---- | :-------- | :-------- | :--: |
-|  1  | 15.02 | Win11 Chrome 132 |   high   | Приходит дефолтное значение "dsdsd" не соответствующее создаваемому в POST в атрибуте "name" при клике по кнопке [Send] | Было создано обьявление со значением { |
-
-"sellerID": 7777777,
-"name": "dags",
-"price":1200,
-"statistics":{
-"contacts":12,
-"likes":1000,
-"viewCount":200
-}
-}
-|1) Отправка запроса GET api/1/:sellerID/item со значением sellerID 7777777| В объявлении приходит значение "name": "dags"|В объявлении приходит значение "name": "dsdsd"| Link Link|
-|2|15.02|Win11 Chrome 132|high|Значения в атрибутах "name" и "id" перепутаны местами в "id" приходит значения атрибута "name"(название объявления), а в атрибуте "name" приходит id объявления,в {sellerID} при клике по кнопке [Send]|Было создано обьявление со значением {
-"sellerID": 7777777,
-"name": "dags",
-"price":1200,
-"statistics":{
-"contacts":12,
-"likes":1000,
-"viewCount":200
-}
-}|1)Отправить запрос GET api/1/:sellerID/item со значением sellerID 7777777| В объявлении приходит значение "id": "41716fac-e332-4ac9-ac5c-66cdba227b0c","name": "dags"|В объявлении приходит значение "id": "dsdsd","name": "41716fac-e332-4ac9-ac5c-66cdba227b0c"| Link Link|
-|3|15.02|Win11 Chrome 132| high |Было создано обьявление со значением {
-"sellerID": 7777777,
-"name": "dags",
-"price":1200,
-"statistics":{
-"contacts":12,
-"likes":1000,
-"viewCount":200
-}
-}|1)Отправить запрос GET api/1/statistic/:id со значением id 41716fac-e332-4ac9-ac5c-66cdba227b0c |В объявлении приходит значение "contacts":12,
-"likes":1000,
-"viewCount":200| В объявлении приходит значение {
-"contacts": 12,
-"likes": 2000,
-"viewCount": 2200
-}| Link Link|
+| Id  | Data  | Environment | Priority | Title | Precondition  | Steps | Ex Result | Ac Result | Link |
+| :-: | :---: | :-------- | :------: | :------------- | :----- | :---- | :-------- | :-------- | :--: |
+|  1  | 15.02 | Win11 Chrome 132 |   high   | Приходит дефолтное значение "dsdsd" не соответствующее создаваемому в POST в атрибуте "name" при клике по кнопке [Send] | Было создано обьявление со значением {"sellerID":7777777,"name": "dags","price":1200,"statistics":{"contacts":12,"likes":1000,"viewCount":200}}|1) Отправка запроса GET api/1/:sellerID/item со значением sellerID 7777777| В объявлении приходит значение "name": "dags"|В объявлении приходит значение "name": "dsdsd"| Link Link|
+|2|15.02|Win11 Chrome 132|high|Значения в атрибутах "name" и "id" перепутаны местами в "id" приходит значения атрибута "name"(название объявления), а в атрибуте "name" приходит id объявления,в {sellerID} при клике по кнопке [Send]|Было создано обьявление со значением {"sellerID": 7777777,"name": "dags","price":1200,"statistics":{"contacts":12,"likes":1000,"viewCount":200}}|1)Отправить запрос GET api/1/:sellerID/item со значением sellerID 7777777| В объявлении приходит значение "id": "41716fac-e332-4ac9-ac5c-66cdba227b0c","name": "dags"|В объявлении приходит значение "id": "dsdsd","name": "41716fac-e332-4ac9-ac5c-66cdba227b0c"| Link Link|
+|3|15.02|Win11 Chrome 132| high|Приходят не корректные значения в атрибутах "likes" и "viewCount" отличающиеся от карточки объявления в statistic при клике по кнопке [Send] |Было создано обьявление со значением {"sellerID": 7777777,"name": "dags","price":1200,"statistics":{"contacts":12,"likes":1000,"viewCount":200}}|1)Отправить запрос GET api/1/statistic/:id со значением id 41716fac-e332-4ac9-ac5c-66cdba227b0c |В объявлении приходит значение "contacts":12,"likes":1000,"viewCount":200| В объявлении приходит значение {"contacts": 12,"likes": 2000,"viewCount": 2200}| Link Link|
